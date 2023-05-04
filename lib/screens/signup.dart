@@ -4,20 +4,22 @@ import 'package:umkm/Animation/fadeAnimation.dart';
 import 'package:umkm/custom_text.dart';
 import 'package:umkm/service/services.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignUpState extends State<SignUp> {
+  TextEditingController nameController = TextEditingController(text: '');
+  TextEditingController imageController = TextEditingController(text: '');
   TextEditingController emailController = TextEditingController(text: '');
   TextEditingController passwordController = TextEditingController(text: '');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(physics: BouncingScrollPhysics(), children: [
+      body: ListView(children: [
         Column(
           children: [
             const SizedBox(
@@ -41,7 +43,7 @@ class _SignInState extends State<SignIn> {
                   ),
                   Container(
                     child: CustomText(
-                      text: "Sign In Now",
+                      text: "Sign Up Now",
                       color: const Color(0xFF292D32).withOpacity(0.9),
                       fontSize: 40,
                       fontWeight: FontWeight.w700,
@@ -64,6 +66,47 @@ class _SignInState extends State<SignIn> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
+                FadeAnimation(
+                  delay: 0.6,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 58,
+                        width: 350,
+                        margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        decoration: BoxDecoration(
+                          color: Colors.grey.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Stack(children: [
+                          Container(
+                            margin: const EdgeInsets.fromLTRB(20, 6, 20, 0),
+                            child: TextFormField(
+                              controller: nameController,
+                              decoration: InputDecoration(
+                                enabledBorder: InputBorder.none,
+                                border: InputBorder.none,
+                                hintText: 'Enter new task',
+                                hintStyle: GoogleFonts.inter(
+                                    color: Colors.black87.withOpacity(0.3),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              style: GoogleFonts.inter(
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 15),
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 FadeAnimation(
                   delay: 0.6,
                   child: Row(
@@ -163,8 +206,11 @@ class _SignInState extends State<SignIn> {
             InkWell(
               onTap: () async {
                 // Navigator.pushNamed(context, '/core');
-                await AuthService.signIn(
-                    emailController.text, passwordController.text);
+                await AuthService.signUp(
+                    nameController.text,
+                    imageController.text,
+                    emailController.text,
+                    passwordController.text);
               },
               child: Container(
                 height: 50,
@@ -181,7 +227,7 @@ class _SignInState extends State<SignIn> {
                 ),
                 child: const Center(
                   child: Text(
-                    'Sign In',
+                    'Sign Up',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
@@ -195,12 +241,12 @@ class _SignInState extends State<SignIn> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/signup');
+                Navigator.pushNamed(context, '/signin');
               },
               child: Container(
                 margin: const EdgeInsets.fromLTRB(0, 5, 0, 10),
                 child: CustomText(
-                  text: "Didn't have account?",
+                  text: "Already have account?",
                   color: const Color(0xFF292D32).withOpacity(0.7),
                   fontSize: 10,
                   fontWeight: FontWeight.w500,
@@ -257,7 +303,7 @@ class _SignInState extends State<SignIn> {
                         width: 3,
                       ),
                       Text(
-                        'Sign In with google ',
+                        'Sign Up with google ',
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w500,

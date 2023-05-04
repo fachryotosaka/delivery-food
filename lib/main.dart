@@ -12,6 +12,7 @@ import 'package:umkm/screens/deleveryV2.dart';
 import 'package:umkm/screens/order_screen.dart';
 import 'package:umkm/screens/profile_screen.dart';
 import 'package:umkm/screens/signin.dart';
+import 'package:umkm/screens/signup.dart';
 import 'package:umkm/screens/location.dart';
 import 'package:umkm/service/services.dart';
 
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         '/orders': (context) => const OrderScreen(),
         '/core': (context) => const Core(),
         '/signin': (context) => const SignIn(),
+        '/signup': (context) => const SignUp(),
         '/Wistlist': (context) => const Wistlist(),
         '/location': (context) => const Location(),
         '/chat': (context) => const Chat(),
