@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:umkm/Animation/fadeAnimation.dart';
 import 'package:umkm/custom_text.dart';
+import 'package:umkm/service/services.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -10,6 +12,10 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  User? user = FirebaseAuth.instance.currentUser;
+  late String displayName = user!.displayName ?? '';
+  late String displayEmail = user!.email ?? '';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -87,7 +93,7 @@ class _ProfileState extends State<Profile> {
                   delay: 0.4,
                   child: Container(
                     margin: const EdgeInsets.fromLTRB(25, 30, 25, 0),
-                    width: 350,
+                    width: 330,
                     height: 100,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -104,8 +110,8 @@ class _ProfileState extends State<Profile> {
                       children: [
                         Container(
                           margin: const EdgeInsets.only(
-                            left: 23,
-                            right: 23,
+                            left: 10,
+                            right: 10,
                           ),
                           width: 300,
                           height: 60,
@@ -119,7 +125,7 @@ class _ProfileState extends State<Profile> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                       image: NetworkImage(
-                                          "https://th.bing.com/th/id/OIP.az15hEnTUBI5kMEkA0OAQQHaJx?pid=ImgDet&rs=1"),
+                                          "https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80"),
                                       fit: BoxFit.cover,
                                     ),
                                     boxShadow: [
@@ -137,8 +143,8 @@ class _ProfileState extends State<Profile> {
                                       margin: const EdgeInsets.only(top: 5),
                                       width: double.maxFinite,
                                       height: 20,
-                                      child: const Text(
-                                        "Hi, Fachry Otosaka",
+                                      child: Text(
+                                        '${displayName}',
                                         style: TextStyle(
                                           fontSize: 16,
                                           fontFamily: "Mulish",
@@ -150,8 +156,8 @@ class _ProfileState extends State<Profile> {
                                       margin: const EdgeInsets.only(top: 2),
                                       width: double.maxFinite,
                                       height: 15,
-                                      child: const Text(
-                                        "fachrylord0@gmail.com",
+                                      child: Text(
+                                        '${displayEmail}',
                                         style: TextStyle(
                                           color:
                                               Color.fromRGBO(41, 45, 50, 0.6),
@@ -164,7 +170,7 @@ class _ProfileState extends State<Profile> {
                                     Container(
                                       margin: const EdgeInsets.only(top: 0),
                                       width: double.maxFinite,
-                                      height: 18,
+                                      height: 10,
                                       child: const Text(
                                         "+62895351066695",
                                         style: TextStyle(
@@ -603,7 +609,9 @@ class _ProfileState extends State<Profile> {
                   child: Container(
                     margin: const EdgeInsets.only(top: 20),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        SignOut().signOut();
+                      },
                       child: SizedBox(
                         width: 350,
                         height: 60,

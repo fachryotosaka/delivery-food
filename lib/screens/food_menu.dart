@@ -187,11 +187,11 @@ class _FoodMenuState extends State<FoodMenu> {
                   ],
                 ),
                 const SizedBox(
-                  width: 60,
+                  width: 50,
                 ),
                 Container(
                   height: 145,
-                  width: 145,
+                  width: 130,
                   margin: const EdgeInsets.only(top: 10),
                   decoration: const BoxDecoration(
                     image: DecorationImage(
@@ -327,7 +327,7 @@ class _FoodMenuState extends State<FoodMenu> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 20),
+                  const SizedBox(width: 15),
                   GestureDetector(
                     onTap: () {},
                     child: Container(
@@ -347,7 +347,7 @@ class _FoodMenuState extends State<FoodMenu> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 20),
+                  const SizedBox(width: 15),
                   GestureDetector(
                     onTap: () {},
                     child: Container(
@@ -375,6 +375,7 @@ class _FoodMenuState extends State<FoodMenu> {
         FadeAnimation(
           delay: 1.4,
           child: MasonryGridView.count(
+              physics: ScrollPhysics(),
               crossAxisCount: 2,
               shrinkWrap: true,
               itemCount: Listmenu.length,

@@ -13,6 +13,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  User? user = FirebaseAuth.instance.currentUser;
+  late String displayName = user!.displayName ?? '';
+  late String image = user!.photoURL ?? '';
+
   @override
   Widget build(BuildContext context) {
     var we = MediaQuery.of(context).size.width;
@@ -34,9 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.fromLTRB(50, 65, 50, 0),
+                  margin: const EdgeInsets.fromLTRB(50, 65, 0, 0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       FadeAnimation(
@@ -52,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(200),
-                            image: const DecorationImage(
+                            image: DecorationImage(
                               image: NetworkImage(
                                   'https://images.unsplash.com/photo-1606542758304-820b04394ac2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80'),
                             ),
@@ -75,10 +80,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
+                              // width: double.maxFinite,
                               margin: const EdgeInsets.fromLTRB(13, 3, 20, 0),
                               child: CustomText(
-                                text: FirebaseAuth
-                                    .instance.currentUser!.displayName!,
+                                text: displayName,
                                 color: Colors.white,
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
@@ -99,31 +104,35 @@ class _HomeScreenState extends State<HomeScreen> {
                       FadeAnimation(
                         delay: 0.4,
                         child: Container(
-                          height: 45,
-                          width: 45,
-                          margin: const EdgeInsets.fromLTRB(40, 2, 0, 0),
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black45.withOpacity(0.7),
-                                spreadRadius: 0.3,
-                                blurRadius: 50,
-                                offset: const Offset(
-                                    0, 4), // changes position of shadow
+                            height: 45,
+                            width: 45,
+                            margin: const EdgeInsets.fromLTRB(0, 2, 0, 0),
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black45.withOpacity(0.7),
+                                  spreadRadius: 0.3,
+                                  blurRadius: 50,
+                                  offset: const Offset(
+                                      0, 4), // changes position of shadow
+                                ),
+                              ],
+                              border: Border.all(
+                                width: 2,
+                                color: Colors.white,
                               ),
-                            ],
-                            border: Border.all(
-                              width: 2,
                               color: Colors.white,
+                              borderRadius: BorderRadius.circular(200),
                             ),
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(200),
-                          ),
-                          child: Icon(
-                            Icons.notifications,
-                            color: Colors.grey[600],
-                          ),
-                        ),
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.notifications,
+                                color: Colors.grey[600],
+                              ),
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/inbox');
+                              },
+                            )),
                       ),
                     ],
                   ),
@@ -211,7 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   GestureDetector(
                                       onTap: () {
-                                        print("Tapped");
+                                        Navigator.pushNamed(context, '/category');
                                       },
                                       child: Stack(
                                         children: [
@@ -566,11 +575,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                       const SizedBox(
-                        width: 45,
+                        width: 35,
                       ),
                       Container(
                         height: 145,
-                        width: 145,
+                        width: 130,
                         margin: const EdgeInsets.only(top: 10),
                         decoration: const BoxDecoration(
                           image: DecorationImage(
