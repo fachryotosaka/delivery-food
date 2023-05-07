@@ -52,7 +52,6 @@ class _DetailState extends State<Detail> {
                   ),
                 ),
                 // end app bar
-
                 // Detail N Image
                 SizedBox(
                   height: 276,

@@ -104,31 +104,35 @@ class _HomeScreenState extends State<HomeScreen> {
                       FadeAnimation(
                         delay: 0.4,
                         child: Container(
-                          height: 45,
-                          width: 45,
-                          margin: const EdgeInsets.fromLTRB(0, 2, 0, 0),
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black45.withOpacity(0.7),
-                                spreadRadius: 0.3,
-                                blurRadius: 50,
-                                offset: const Offset(
-                                    0, 4), // changes position of shadow
+                            height: 45,
+                            width: 45,
+                            margin: const EdgeInsets.fromLTRB(0, 2, 0, 0),
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black45.withOpacity(0.7),
+                                  spreadRadius: 0.3,
+                                  blurRadius: 50,
+                                  offset: const Offset(
+                                      0, 4), // changes position of shadow
+                                ),
+                              ],
+                              border: Border.all(
+                                width: 2,
+                                color: Colors.white,
                               ),
-                            ],
-                            border: Border.all(
-                              width: 2,
                               color: Colors.white,
+                              borderRadius: BorderRadius.circular(200),
                             ),
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(200),
-                          ),
-                          child: Icon(
-                            Icons.notifications,
-                            color: Colors.grey[600],
-                          ),
-                        ),
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.notifications,
+                                color: Colors.grey[600],
+                              ),
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/inbox');
+                              },
+                            )),
                       ),
                     ],
                   ),
@@ -216,7 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   GestureDetector(
                                       onTap: () {
-                                        print("Tapped");
+                                        Navigator.pushNamed(context, '/category');
                                       },
                                       child: Stack(
                                         children: [

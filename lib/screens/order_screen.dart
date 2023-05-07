@@ -265,7 +265,9 @@ class _OrderScreenState extends State<OrderScreen> {
                                   ],
                                 ),
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.pushNamed(context, '/rating');
+                                  },
                                   child: Container(
                                     height: 30,
                                     width: 75,
