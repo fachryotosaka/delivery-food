@@ -619,7 +619,28 @@ class _ProfileState extends State<Profile> {
                     margin: const EdgeInsets.only(top: 20),
                     child: InkWell(
                       onTap: () {
-                        SignOut().signOut();
+                        showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: const Text('Logout'),
+                            content: const Text('Are Your Sure ?'),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(context, 'Cancel'),
+                                child: const Text('Cancel'),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  SignOut().signOut();
+
+                                  Navigator.pop(context, 'OK');
+                                },
+                                child: const Text('Yes'),
+                              ),
+                            ],
+                          ),
+                        );
                       },
                       child: SizedBox(
                         width: 350,
