@@ -91,123 +91,130 @@ class _ProfileState extends State<Profile> {
               children: [
                 FadeAnimation(
                   delay: 0.4,
-                  child: Container(
-                    margin: const EdgeInsets.fromLTRB(25, 30, 25, 0),
-                    width: 330,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black87.withOpacity(0.1),
-                            offset: const Offset(0, 2),
-                            blurRadius: 20)
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                            left: 10,
-                            right: 10,
-                          ),
-                          width: 300,
-                          height: 60,
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.only(left: 2),
-                                width: 50,
-                                height: 50,
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                      image: NetworkImage(
-                                          "https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80"),
-                                      fit: BoxFit.cover,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          offset: Offset(0, 0), blurRadius: 2)
-                                    ]),
-                              ),
-                              Container(
-                                width: 160,
-                                margin: const EdgeInsets.only(left: 15, top: 0),
-                                height: double.infinity,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      margin: const EdgeInsets.only(top: 5),
-                                      width: double.maxFinite,
-                                      height: 20,
-                                      child: Text(
-                                        '${displayName}',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontFamily: "Mulish",
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, "profilesetup");
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(25, 30, 25, 0),
+                      width: 330,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black87.withOpacity(0.1),
+                              offset: const Offset(0, 2),
+                              blurRadius: 20)
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(
+                              left: 10,
+                              right: 10,
+                            ),
+                            width: 300,
+                            height: 60,
+                            child: Row(
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(left: 2),
+                                  width: 50,
+                                  height: 50,
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                            "https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80"),
+                                        fit: BoxFit.cover,
                                       ),
-                                    ),
-                                    Container(
-                                      margin: const EdgeInsets.only(top: 2),
-                                      width: double.maxFinite,
-                                      height: 15,
-                                      child: Text(
-                                        '${displayEmail}',
-                                        style: TextStyle(
-                                          color:
-                                              Color.fromRGBO(41, 45, 50, 0.6),
-                                          fontSize: 10,
-                                          fontFamily: "Mulish",
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      margin: const EdgeInsets.only(top: 0),
-                                      width: double.maxFinite,
-                                      height: 10,
-                                      child: const Text(
-                                        "+62895351066695",
-                                        style: TextStyle(
-                                          color:
-                                              Color.fromRGBO(41, 45, 50, 0.6),
-                                          fontSize: 10,
-                                          fontFamily: "Mulish",
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                                      boxShadow: [
+                                        BoxShadow(
+                                            offset: Offset(0, 0), blurRadius: 2)
+                                      ]),
                                 ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(left: 20, top: 5),
-                                padding: const EdgeInsets.all(10),
-                                width: 50,
-                                height: 50,
-                                child: InkWell(
-                                  onTap: () {},
-                                  child: SizedBox(
-                                    width: double.maxFinite,
-                                    height: double.maxFinite,
-                                    child: Icon(
-                                      Icons.edit_outlined,
-                                      size: 25,
-                                      color: const Color(0xFF292D32)
-                                          .withOpacity(0.5),
-                                    ),
+                                Container(
+                                  width: 160,
+                                  margin:
+                                      const EdgeInsets.only(left: 15, top: 0),
+                                  height: double.infinity,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        margin: const EdgeInsets.only(top: 5),
+                                        width: double.maxFinite,
+                                        height: 20,
+                                        child: Text(
+                                          '${displayName}',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: "Mulish",
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(top: 2),
+                                        width: double.maxFinite,
+                                        height: 15,
+                                        child: Text(
+                                          '${displayEmail}',
+                                          style: TextStyle(
+                                            color:
+                                                Color.fromRGBO(41, 45, 50, 0.6),
+                                            fontSize: 10,
+                                            fontFamily: "Mulish",
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.only(top: 0),
+                                        width: double.maxFinite,
+                                        height: 10,
+                                        child: const Text(
+                                          "+62895351066695",
+                                          style: TextStyle(
+                                            color:
+                                                Color.fromRGBO(41, 45, 50, 0.6),
+                                            fontSize: 10,
+                                            fontFamily: "Mulish",
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              )
-                            ],
-                          ),
-                        )
-                      ],
+                                Container(
+                                  margin:
+                                      const EdgeInsets.only(left: 20, top: 5),
+                                  padding: const EdgeInsets.all(10),
+                                  width: 50,
+                                  height: 50,
+                                  child: InkWell(
+                                    onTap: () {},
+                                    child: SizedBox(
+                                      width: double.maxFinite,
+                                      height: double.maxFinite,
+                                      child: Icon(
+                                        Icons.edit_outlined,
+                                        size: 25,
+                                        color: const Color(0xFF292D32)
+                                            .withOpacity(0.5),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -217,7 +224,9 @@ class _ProfileState extends State<Profile> {
                   child: Container(
                     margin: const EdgeInsets.only(top: 30),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, 'notifseting');
+                      },
                       child: Container(
                         width: 350,
                         height: 50,

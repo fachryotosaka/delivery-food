@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:umkm/screens/core.dart';
 import 'package:umkm/screens/home_screens.dart';
-import 'package:umkm/screens/signin.dart';
 import 'package:umkm/screens/signup.dart';
 
 class SignOut {
@@ -72,6 +71,7 @@ class AuthService {
       );
     } catch (e) {
       print(e.toString());
+
       return null;
     }
   }
@@ -85,7 +85,7 @@ class AuthService {
     } on FirebaseAuthException catch (e) {
       AlertDialog alert = AlertDialog(
         title: Text("Error :"),
-        content: Text("${e.message}"),
+        content: Text("${e.message.toString()}"),
       );
     } catch (e) {
       print(e.toString());

@@ -11,10 +11,13 @@ import 'package:umkm/screens/home_screens.dart';
 import 'package:umkm/screens/detail.dart';
 import 'package:umkm/screens/deleveryV2.dart';
 import 'package:umkm/screens/inbox.dart';
+import 'package:umkm/screens/notification_setting.dart';
 import 'package:umkm/screens/order_screen.dart';
 import 'package:umkm/screens/profile_screen.dart';
+import 'package:umkm/screens/profile_setup.dart';
 import 'package:umkm/screens/rating.dart';
-import 'package:umkm/screens/signin.dart';
+import 'package:umkm/screens/reset_password.dart';
+// import 'package:umkm/screens/signin.dart';
 import 'package:umkm/screens/signup.dart';
 import 'package:umkm/screens/location.dart';
 import 'package:umkm/service/services.dart';
@@ -47,15 +50,18 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => const Profile(),
         '/orders': (context) => const OrderScreen(),
         '/core': (context) => const Core(),
-        '/signin': (context) => const SignIn(),
+        // '/signin': (context) => const SignIn(),
         '/signup': (context) => const SignUp(),
         '/Wistlist': (context) => const Wistlist(),
         '/location': (context) => const Location(),
         '/chat': (context) => const Chat(),
         '/auth': (context) => AuthService().handleAuthState(),
-        '/inbox' : (context) => Inbox(),
-        '/rating' : (context) => Rating(),
-        '/category' :(context) => Category()
+        '/inbox': (context) => Inbox(),
+        '/rating': (context) => Rating(),
+        '/category': (context) => Category(),
+        'profilesetup': (context) => ProfileSetup(),
+        'notifseting': (context) => NotificationSetting(),
+        '/resetpassword': (context) => ResetPassword(),
       },
       home: AuthService().handleAuthState(),
     );
