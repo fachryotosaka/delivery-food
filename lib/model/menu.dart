@@ -14,12 +14,12 @@ class Menu {
 List<Menu> Listmenu = [
   Menu(
       idm: "assets/gyu2.png",
-      title: "Gyudon Steak",
+      title: "Rendang",
       sub: "15 mins - 500 kal",
       price: "\$50.00"),
   Menu(
       idm: "assets/ss.png",
-      title: "Seafood ",
+      title: "Fried Chicken",
       sub: "15 mins - 5000 kal",
       price: "\$90.00"),
   Menu(

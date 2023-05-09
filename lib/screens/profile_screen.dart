@@ -129,7 +129,7 @@ class _ProfileState extends State<Profile> {
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
                                         image: NetworkImage(
-                                            "https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80"),
+                                            "https://images.unsplash.com/photo-1606542758304-820b04394ac2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"),
                                         fit: BoxFit.cover,
                                       ),
                                       boxShadow: [
@@ -255,7 +255,7 @@ class _ProfileState extends State<Profile> {
                                     width: 250,
                                     height: 25,
                                     child: Text(
-                                      "Account",
+                                      "General",
                                       style: TextStyle(
                                           color: const Color(0xFF292D32)
                                               .withOpacity(0.9),
@@ -360,7 +360,9 @@ class _ProfileState extends State<Profile> {
                   child: Container(
                     margin: const EdgeInsets.only(top: 20),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, "/privacy");
+                      },
                       child: SizedBox(
                         width: 350,
                         height: 60,
@@ -484,68 +486,6 @@ class _ProfileState extends State<Profile> {
 
                 // Shop
 
-                FadeAnimation(
-                  delay: 1.6,
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 20),
-                    child: InkWell(
-                      onTap: () {},
-                      child: SizedBox(
-                        width: 350,
-                        height: 60,
-                        child: Row(
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              child: Icon(
-                                Icons.shopping_cart,
-                                size: 25,
-                                color: const Color(0xFF292D32).withOpacity(0.9),
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.only(left: 15),
-                              width: 250,
-                              height: double.infinity,
-                              child: Column(
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.only(top: 14),
-                                    width: 250,
-                                    height: 35,
-                                    child: Text(
-                                      "Shop",
-                                      style: TextStyle(
-                                          color: const Color(0xFF292D32)
-                                              .withOpacity(0.9),
-                                          fontSize: 14,
-                                          fontFamily: "Mulish",
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.only(bottom: 1),
-                                    width: 250,
-                                    height: 25,
-                                    child: Text(
-                                      "Your Shop",
-                                      style: TextStyle(
-                                          color: const Color(0xFF292D32)
-                                              .withOpacity(0.5),
-                                          fontSize: 10,
-                                          fontFamily: "Mulish",
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
                 // Bahasa
 
                 FadeAnimation(

@@ -103,7 +103,7 @@ class _DetailState extends State<Detail> {
                   child: Column(
                     children: [
                       const Text(
-                        "Gyudon Steak",
+                        "Rendang",
                         style: TextStyle(
                             fontSize: 35,
                             fontFamily: "MPLUS1p",

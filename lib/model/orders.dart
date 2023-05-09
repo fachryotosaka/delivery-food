@@ -9,12 +9,12 @@ class Order {
 List<Order> Listorder = [
   Order(
     idm: "assets/gyuu.png",
-    title: "Gyudon Steak",
+    title: "Rendang",
     sub: "Add : Cheese, Noodle",
   ),
   Order(
     idm: "assets/ss.png",
-    title: "Seafood Shrimps",
+    title: "Fried Chicken",
     sub: "Add : Cheese, Noodle",
   ),
   Order(

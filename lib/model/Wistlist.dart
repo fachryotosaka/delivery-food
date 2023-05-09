@@ -9,15 +9,16 @@ class Wistlist {
       required this.sub,
       required this.price});
 }
+
 List<Wistlist> Listmenu = [
   Wistlist(
       idm: "assets/gyu2.png",
-      title: "Gyudon Steak",
+      title: "Rendang",
       sub: "15 mins - 500 kal",
       price: "\$50.00"),
   Wistlist(
       idm: "assets/ss.png",
-      title: "Seafood ",
+      title: "Fried Chicken ",
       sub: "15 mins - 5000 kal",
       price: "\$90.00"),
   Wistlist(
@@ -25,23 +26,19 @@ List<Wistlist> Listmenu = [
       title: "Ramen",
       sub: "15 mins - 500 kal",
       price: "\$30.00"),
-
-    Wistlist(
+  Wistlist(
       idm: "assets/gyu2.png",
-      title: "Gyudon Steak",
+      title: "Rendang",
       sub: "15 mins - 500 kal",
       price: "\$50.00"),
-
-    Wistlist(
+  Wistlist(
       idm: "assets/ri.png",
       title: "Ramen",
       sub: "15 mins - 500 kal",
       price: "\$30.00"),
-
- Wistlist(
+  Wistlist(
       idm: "assets/ss.png",
-      title: "Seafood ",
+      title: "Fried Chicken ",
       sub: "15 mins - 5000 kal",
       price: "\$90.00"),
-
 ];

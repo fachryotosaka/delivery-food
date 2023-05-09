@@ -16,13 +16,13 @@ class Cart {
 List<Cart> Listcart = [
   Cart(
       idm: "assets/gyuu.png",
-      title: "Gyudon Steak",
+      title: "Rendang",
       sub: "Add : Cheese, Noodle",
       price: "\$50.00",
       total: 1),
   Cart(
       idm: "assets/ss.png",
-      title: "Seafood Shripms",
+      title: "Fried Chicken",
       sub: "Add : Cheese, Noodle",
       price: "\$50.00",
       total: 2),
