@@ -13,8 +13,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    user!.reload();
+    super.initState();
+  }
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  User? user = FirebaseAuth.instance.currentUser;
+  late User? user = FirebaseAuth.instance.currentUser;
   late String displayName = user!.displayName ?? '';
   late String image = user!.photoURL ?? '';
 
@@ -88,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     margin:
                                         const EdgeInsets.fromLTRB(13, 3, 20, 0),
                                     child: CustomText(
-                                      text: displayName,
+                                      text: '${displayName}',
                                       color: Colors.white,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500,
@@ -266,7 +272,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     margin:
                                         const EdgeInsets.fromLTRB(2, 4, 0, 0),
                                     child: CustomText(
-                                      text: "Rendang",
+                                      text: "Food",
                                       color: const Color(0xFF292D32)
                                           .withOpacity(0.6),
                                       fontSize: 11,

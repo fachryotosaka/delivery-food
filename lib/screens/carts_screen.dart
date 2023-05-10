@@ -227,7 +227,7 @@ class _CartScreenState extends State<CartScreen> {
                                           ),
                                           Container(
                                             margin: const EdgeInsets.only(
-                                                top: 5, left: 6),
+                                                top: 7, left: 6),
                                             height: 22,
                                             width: 30,
                                             child: Text(

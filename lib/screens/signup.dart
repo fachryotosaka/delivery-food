@@ -13,6 +13,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final User? user = FirebaseAuth.instance.currentUser;
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _imageController = TextEditingController(text: '');
@@ -22,48 +23,54 @@ class _SignUpState extends State<SignUp> {
   bool _isLoading = false;
   String _error = '';
 
-  void _submit() async {
-    if (!_formKey.currentState!.validate()) {
-      return;
-    }
-
-    setState(() {
-      _isLoading = true;
-    });
-    try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text,
-      );
-      // Store additional user data here if needed, like username, etc.
+  void _submitForms() async {
+    if (_formKey.currentState!.validate()) {
       setState(() {
-        _isLoading = false;
+        _isLoading = true;
       });
-      Navigator.of(context).pop();
-    } on FirebaseAuthException catch (e) {
-      String errorMessage;
+      _formKey.currentState!.save();
+      try {
+        UserCredential userCredential =
+            await _auth.createUserWithEmailAndPassword(
+                email: _emailController.text.trim(),
+                password: _passwordController.text.trim());
+        User? user = userCredential.user;
+        // ignore: deprecated_member_use
+        user?.updateProfile(displayName: _usernameController.text);
 
-      switch (e.code) {
-        case 'user-not-found':
-          errorMessage = 'User not found for that email.';
-          break;
-        case 'wrong-password':
-          errorMessage = 'Invalid password.';
-          break;
-        case 'invalid-email':
-          errorMessage = 'Invalid email address.';
-          break;
-        default:
-          errorMessage = 'An undefined error occurred.';
-          break;
+        setState(() {
+          _isLoading = false;
+        });
+      } on FirebaseAuthException catch (e) {
+        setState(() {
+          _isLoading = false;
+        });
+        String errorMessage;
+
+        switch (e.code) {
+          case 'user-not-found':
+            errorMessage = 'User not found for that email.';
+            break;
+          case 'wrong-password':
+            errorMessage = 'Invalid password.';
+            break;
+          case 'invalid-email':
+            errorMessage = 'Invalid email address.';
+            break;
+          default:
+            errorMessage = 'An undefined error occurred.';
+            break;
+        }
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(errorMessage),
+            backgroundColor: Colors.red,
+          ),
+        );
+      } catch (e) {
+        print(e);
       }
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(errorMessage),
-          backgroundColor: Colors.red,
-        ),
-      );
     }
   }
 
@@ -295,7 +302,9 @@ class _SignUpState extends State<SignUp> {
                     height: 40,
                   ),
                   InkWell(
-                    onTap: _isLoading ? null : _submitForm,
+                    onTap: () async {
+                      await _isLoading ? null : _submitForm;
+                    },
                     child: _isLoading
                         ? CircularProgressIndicator()
                         : Container(
@@ -639,37 +648,36 @@ class _SignUpState extends State<SignUp> {
                           height: 40,
                         ),
                         InkWell(
-                          onTap: () async {
+                          onTap: () {
                             // Navigator.pushNamed(context, '/core');
-                            await AuthService.signUp(
-                                _usernameController.text,
-                                _imageController.text,
-                                _emailController.text,
-                                _passwordController.text);
+                            _isLoading ? null : _submitForms();
                           },
-                          child: Container(
-                            height: 50,
-                            width: 350,
-                            decoration: BoxDecoration(
-                              color: const Color.fromRGBO(43, 43, 43, 0.9),
-                              borderRadius: BorderRadius.circular(30),
-                              boxShadow: const [
-                                BoxShadow(
-                                    color: Colors.black38,
-                                    offset: Offset(0, 2),
-                                    blurRadius: 10)
-                              ],
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'Sign Up',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
+                          child: _isLoading
+                              ? CircularProgressIndicator()
+                              : Container(
+                                  height: 50,
+                                  width: 350,
+                                  decoration: BoxDecoration(
+                                    color:
+                                        const Color.fromRGBO(43, 43, 43, 0.9),
+                                    borderRadius: BorderRadius.circular(30),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                          color: Colors.black38,
+                                          offset: Offset(0, 2),
+                                          blurRadius: 10)
+                                    ],
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      'Sign Up',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
                         ),
                         const SizedBox(
                           height: 5,
