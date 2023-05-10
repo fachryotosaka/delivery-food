@@ -222,7 +222,11 @@ class _RatingState extends State<Rating> {
                             decoration: BoxDecoration(
                               color: Color.fromRGBO(217, 217, 217, 1),
                               shape: BoxShape.circle,
-                              // image: DecorationImage()
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                    "https://images.unsplash.com/photo-1683220642973-a4d0ca134714?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0NXx8fGVufDB8fHx8&auto=format&fit=crop&w=900&q=60"),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),

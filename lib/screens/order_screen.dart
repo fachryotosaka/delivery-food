@@ -272,7 +272,7 @@ class _OrderScreenState extends State<OrderScreen> {
                                     height: 30,
                                     width: 75,
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFFFF005C),
+                                      color: Color(0xFF292D32).withOpacity(0.8),
                                       borderRadius: BorderRadius.circular(15),
                                       boxShadow: [
                                         BoxShadow(
@@ -284,9 +284,9 @@ class _OrderScreenState extends State<OrderScreen> {
                                     ),
                                     child: Container(
                                       margin: const EdgeInsets.only(
-                                          left: 18, top: 5),
+                                          left: 24, top: 5),
                                       child: const CustomText(
-                                        text: "Cancel",
+                                        text: "View",
                                         color: Colors.white,
                                         fontSize: 11,
                                         fontWeight: FontWeight.w700,

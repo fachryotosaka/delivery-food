@@ -103,7 +103,7 @@ class _DetailState extends State<Detail> {
                   child: Column(
                     children: [
                       const Text(
-                        "Gyudon Steak",
+                        "Rendang",
                         style: TextStyle(
                             fontSize: 35,
                             fontFamily: "MPLUS1p",
@@ -275,7 +275,7 @@ class _DetailState extends State<Detail> {
                                   ),
                                   Container(
                                     margin:
-                                        const EdgeInsets.only(top: 5, left: 11),
+                                        const EdgeInsets.only(top: 7, left: 11),
                                     height: 22,
                                     width: 40,
                                     child: Text(

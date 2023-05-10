@@ -351,7 +351,7 @@ class _WistlistState extends State<Wistlist> {
                   );
                 }),
           ),
-        ],
+          ],
       ),
     );
   }

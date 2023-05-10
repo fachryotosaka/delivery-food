@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  User? user = FirebaseAuth.instance.currentUser;
+  late User? user = FirebaseAuth.instance.currentUser;
   late String displayName = user!.displayName ?? '';
   late String image = user!.photoURL ?? '';
 
@@ -40,9 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Container(
                   margin: const EdgeInsets.fromLTRB(50, 65, 0, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Stack(
                     children: [
                       FadeAnimation(
                         delay: 0.4,
@@ -73,67 +71,78 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      FadeAnimation(
-                        delay: 0.4,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                      Container(
+                        padding: EdgeInsets.only(left: 50, right: 40),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              // width: double.maxFinite,
-                              margin: const EdgeInsets.fromLTRB(13, 3, 20, 0),
-                              child: CustomText(
-                                text: displayName,
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
+                            FadeAnimation(
+                              delay: 0.4,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    // width: double.maxFinite,
+                                    margin:
+                                        const EdgeInsets.fromLTRB(13, 3, 20, 0),
+                                    child: CustomText(
+                                      text: displayName,
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  Container(
+                                    margin:
+                                        const EdgeInsets.fromLTRB(13, 0, 20, 0),
+                                    child: CustomText(
+                                      text: "Let's grab your food !!",
+                                      color: Colors.grey[400],
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            Container(
-                              margin: const EdgeInsets.fromLTRB(13, 0, 20, 0),
-                              child: CustomText(
-                                text: "Let's grab your food !!",
-                                color: Colors.grey[400],
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                              ),
+                            FadeAnimation(
+                              delay: 0.4,
+                              child: Container(
+                                  height: 45,
+                                  width: 45,
+                                  margin: const EdgeInsets.fromLTRB(0, 2, 0, 0),
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black45.withOpacity(0.7),
+                                        spreadRadius: 0.3,
+                                        blurRadius: 50,
+                                        offset: const Offset(
+                                            0, 4), // changes position of shadow
+                                      ),
+                                    ],
+                                    border: Border.all(
+                                      width: 2,
+                                      color: Colors.white,
+                                    ),
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(200),
+                                  ),
+                                  child: IconButton(
+                                    icon: Icon(
+                                      Icons.notifications,
+                                      color: Colors.grey[600],
+                                    ),
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, '/inbox');
+                                    },
+                                  )),
                             ),
                           ],
                         ),
-                      ),
-                      FadeAnimation(
-                        delay: 0.4,
-                        child: Container(
-                            height: 45,
-                            width: 45,
-                            margin: const EdgeInsets.fromLTRB(0, 2, 0, 0),
-                            decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black45.withOpacity(0.7),
-                                  spreadRadius: 0.3,
-                                  blurRadius: 50,
-                                  offset: const Offset(
-                                      0, 4), // changes position of shadow
-                                ),
-                              ],
-                              border: Border.all(
-                                width: 2,
-                                color: Colors.white,
-                              ),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(200),
-                            ),
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.notifications,
-                                color: Colors.grey[600],
-                              ),
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/inbox');
-                              },
-                            )),
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -165,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 enabledBorder: InputBorder.none,
                                 border: InputBorder.none,
-                                hintText: 'Enter new task',
+                                hintText: 'Search',
                                 hintStyle: GoogleFonts.inter(
                                     color: Colors.black87.withOpacity(0.3),
                                     fontSize: 15,
@@ -220,7 +229,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   GestureDetector(
                                       onTap: () {
-                                        Navigator.pushNamed(context, '/category');
+                                        Navigator.pushNamed(
+                                            context, '/category');
                                       },
                                       child: Stack(
                                         children: [
@@ -256,7 +266,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     margin:
                                         const EdgeInsets.fromLTRB(2, 4, 0, 0),
                                     child: CustomText(
-                                      text: "Burger",
+                                      text: "Food",
                                       color: const Color(0xFF292D32)
                                           .withOpacity(0.6),
                                       fontSize: 11,
@@ -312,7 +322,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     margin:
                                         const EdgeInsets.fromLTRB(2, 4, 0, 0),
                                     child: CustomText(
-                                      text: "Sallad",
+                                      text: "Vegetable",
                                       color: const Color(0xFF292D32)
                                           .withOpacity(0.6),
                                       fontSize: 11,
@@ -555,14 +565,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     height: 26,
                                     width: 85,
                                     padding:
-                                        const EdgeInsets.fromLTRB(17, 6, 14, 6),
+                                        const EdgeInsets.fromLTRB(20, 6, 14, 6),
                                     decoration: BoxDecoration(
                                       color: const Color(0xFF292D32)
                                           .withOpacity(0.9),
                                       borderRadius: BorderRadius.circular(15),
                                     ),
                                     child: const CustomText(
-                                      text: "Order now",
+                                      text: "See offer",
                                       color: Colors.white,
                                       fontSize: 9,
                                       fontWeight: FontWeight.w500,
