@@ -13,7 +13,6 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  final User? user = FirebaseAuth.instance.currentUser;
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _imageController = TextEditingController(text: '');
@@ -23,7 +22,7 @@ class _SignUpState extends State<SignUp> {
   bool _isLoading = false;
   String _error = '';
 
-  void _submitForms() async {
+  void _submit() async {
     if (_formKey.currentState!.validate()) {
       setState(() {
         _isLoading = true;
@@ -302,9 +301,7 @@ class _SignUpState extends State<SignUp> {
                     height: 40,
                   ),
                   InkWell(
-                    onTap: () async {
-                      await _isLoading ? null : _submitForm;
-                    },
+                    onTap: _isLoading ? null : _submitForm,
                     child: _isLoading
                         ? CircularProgressIndicator()
                         : Container(
@@ -649,8 +646,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                         InkWell(
                           onTap: () {
-                            // Navigator.pushNamed(context, '/core');
-                            _isLoading ? null : _submitForms();
+                            _isLoading ? null : _submit();
                           },
                           child: _isLoading
                               ? CircularProgressIndicator()

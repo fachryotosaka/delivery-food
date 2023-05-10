@@ -13,12 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    user!.reload();
-    super.initState();
-  }
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late User? user = FirebaseAuth.instance.currentUser;
   late String displayName = user!.displayName ?? '';
@@ -94,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     margin:
                                         const EdgeInsets.fromLTRB(13, 3, 20, 0),
                                     child: CustomText(
-                                      text: '${displayName}',
+                                      text: displayName,
                                       color: Colors.white,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500,

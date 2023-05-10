@@ -22,6 +22,7 @@ import 'package:umkm/screens/reset_password.dart';
 // import 'package:umkm/screens/signin.dart';
 import 'package:umkm/screens/signup.dart';
 import 'package:umkm/screens/location.dart';
+import 'package:umkm/screens/splash.dart';
 import 'package:umkm/service/services.dart';
 
 void main() async {
@@ -65,7 +66,8 @@ class MyApp extends StatelessWidget {
         '/privacy': (context) => Privacy(),
         '/resetpassword': (context) => ResetPassword(),
       },
-      home: AuthService().handleAuthState(),
+      // home: AuthService().handleAuthState(),
+      home: SplashScreen(),
       // home: SignInScreen(),
     );
   }
